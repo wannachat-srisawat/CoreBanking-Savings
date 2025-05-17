@@ -58,11 +58,12 @@ Backend: http://localhost:8080
 
 Swagger UI: http://localhost:8080/swagger-ui/index.html
 ```
-📦 Project Structure
+## 📦 Project Structure
+
 CoreBanking-Savings/
-├── backend/            # Spring Boot application
-├── frontend/           # Angular application
-└── docker-compose.yml  # Compose for backend + frontend
+├── backend/ # Spring Boot application
+├── frontend/ # Angular application
+└── docker-compose.yml # Compose for backend + frontend
 
 👨‍💻 Developer
 Developed by Fluke - Wannachat Srisawat
