@@ -1,4 +1,4 @@
-# 💰 Saving Account - Core Banking Demo
+# 💰 Saving Account - Core Banking Service Demo
 
 This is a full-stack web application simulating a **saving account module** for a core banking system.  
 Users are separated into roles: **TELLER** and **CUSTOMER**, with strict role-based access control and JWT authentication.
@@ -58,6 +58,11 @@ Backend: http://localhost:8080
 
 Swagger UI: http://localhost:8080/swagger-ui/index.html
 ```
+📦 Project Structure
+CoreBanking-Savings/
+├── backend/            # Spring Boot application
+├── frontend/           # Angular application
+└── docker-compose.yml  # Compose for backend + frontend
 
-📌 Author
+👨‍💻 Developer
 Developed by Fluke - Wannachat Srisawat
