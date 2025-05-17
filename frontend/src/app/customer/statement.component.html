@@ -5,23 +5,18 @@
         <form (ngSubmit)="onSubmit()" *ngIf="account">
             <div class="mb-3">
                 <label class="form-label">บัญชีของคุณ</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  [value]="accountNumber"
-                  disabled
-                />
+                <input type="text" class="form-control" [value]="accountNumber" disabled />
                 <input type="hidden" [(ngModel)]="accountNumber" name="accountNumber" />
-              </div>
+            </div>
 
             <div class="row">
                 <div class="col">
                     <label class="form-label">เดือน</label>
                     <select class="form-select" [(ngModel)]="month" name="month" required>
                         <option *ngFor="let m of [1,2,3,4,5,6,7,8,9,10,11,12]" [value]="m">
-                          {{ m }}
+                            {{ m }}
                         </option>
-                      </select>
+                    </select>
                 </div>
                 <div class="col">
                     <label class="form-label">ปี</label>
@@ -70,5 +65,5 @@
             <i class="bi bi-arrow-left-circle"></i> กลับแดชบอร์ด
         </button>
     </div>
-    
+
 </div>

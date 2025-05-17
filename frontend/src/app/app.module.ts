@@ -17,8 +17,8 @@ import { AccountsComponent } from './customer/accounts.component';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent,
-    DashboardComponent, OpenAccountComponent, DepositComponent, 
-    WithdrawComponent, TransferComponent, StatementComponent ,AccountsComponent],
+    DashboardComponent, OpenAccountComponent, DepositComponent,
+    WithdrawComponent, TransferComponent, StatementComponent, AccountsComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   bootstrap: [AppComponent]
 })

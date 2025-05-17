@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,15 +35,15 @@ public class AuthController {
 
         Optional<User> existingEmail = userRepository.findByEmail(request.getEmail());
         if (existingEmail.isPresent() && !existingEmail.get().getCitizenId().equals(request.getCitizenId())) {
-            throw new RuntimeException("Email already exists");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists");
         }
 
         if ("CUSTOMER".equalsIgnoreCase(request.getRole())) {
             if (request.getCitizenId() == null || request.getCitizenId().isBlank()) {
-                throw new RuntimeException("Citizen ID is required for CUSTOMER");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Citizen ID is required for CUSTOMER");
             }
             if (request.getPin() == null || request.getPin().isBlank()) {
-                throw new RuntimeException("PIN is required for CUSTOMER");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "PIN is required for CUSTOMER");
             }
         }
 

@@ -39,32 +39,32 @@ export class TransferComponent {
         const token = localStorage.getItem('token');
         const email = token ? JSON.parse(atob(token.split('.')[1])).sub : null;
 
-            
+
         const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
         const params = new HttpParams().set('email', email);
-      
+
         this.http.get<any>('http://localhost:8080/saving/accountInfo', { headers, params }).subscribe({
-          next: (res) => {
-            this.account = res;
-            this.fromAccountNumber = res.accountNumber;
-          },
-          error: (err) => {
-            const raw = err.error?.message || err.error || 'ไม่สามารถดึงข้อมูลได้';
-            let msg = '';
-      
-            switch (raw) {
-              case 'Saving account not found':
-                msg = 'คุณยังไม่ได้ทำการเปิดบัญชี กรุณาติดต่อ TELLER เพื่อเปิดบัญชี';
-                break;
-              default:
-                msg = typeof raw === 'string' ? raw : JSON.stringify(raw);
+            next: (res) => {
+                this.account = res;
+                this.fromAccountNumber = res.accountNumber;
+            },
+            error: (err) => {
+                const raw = err.error?.message || err.error || 'ไม่สามารถดึงข้อมูลได้';
+                let msg = '';
+
+                switch (raw) {
+                    case 'Saving account not found':
+                        msg = 'คุณยังไม่ได้ทำการเปิดบัญชี กรุณาติดต่อ TELLER เพื่อเปิดบัญชี';
+                        break;
+                    default:
+                        msg = typeof raw === 'string' ? raw : JSON.stringify(raw);
+                }
+
+                this.error = msg;
+                this.showToast('errorToast');
             }
-      
-            this.error = msg;
-            this.showToast('errorToast');
-          }
         });
-      }
+    }
 
 
     onSubmit() {
