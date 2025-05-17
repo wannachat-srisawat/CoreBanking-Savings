@@ -44,7 +44,7 @@ Users are separated into roles: **TELLER** and **CUSTOMER**, with strict role-ba
 git clone https://github.com/wannachat-srisawat/CoreBanking-Savings.git
 cd saving-account-corebanking
 ```
-### 2. Start the app
+### 2. Start the app 🐳 Run with Docker
 
 ```bash
 docker compose up --build
@@ -58,12 +58,21 @@ Backend: http://localhost:8080
 
 Swagger UI: http://localhost:8080/swagger-ui/index.html
 ```
+
+## 🔐 Default Roles
+
+- **TELLER**: Can open account, deposit for customers.
+- **CUSTOMER**: Can withdraw, transfer, request statement.
+- **PERSON**: Can register to become a CUSTOMER.
+
 ## 📦 Project Structure
 
+```
 CoreBanking-Savings/
-├── backend/ # Spring Boot application
-├── frontend/ # Angular application
-└── docker-compose.yml # Compose for backend + frontend
+├── backend/            # Spring Boot application
+├── frontend/           # Angular application
+└── docker-compose.yml  # Compose for backend + frontend
+```
 
 👨‍💻 Developer
 Developed by Fluke - Wannachat Srisawat
