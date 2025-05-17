@@ -1,0 +1,38 @@
+<div class="container py-5">
+    <h3 class="text-center mb-4 text-info">💼 บัญชีของฉัน</h3>
+
+    <div class="text-danger text-center mb-3" *ngIf="error">{{ error }}</div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8" *ngIf="account">
+            <div class="card shadow-sm p-4">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>เลขที่บัญชี</th>
+                                <th class="text-end">ยอดคงเหลือ (บาท)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ account.accountNumber }}</td>
+                                <td class="text-end">{{ account.balance | number: '1.2-2' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="!account && !error" class="text-center text-muted">
+            <p>ยังไม่มีบัญชีในระบบ</p>
+        </div>
+
+        <div class="text-center mt-4">
+            <button class="btn btn-outline-secondary btn-sm px-4" (click)="goBack()">
+                <i class="bi bi-arrow-left-circle"></i> กลับแดชบอร์ด
+            </button>
+        </div>
+    </div>
+</div>

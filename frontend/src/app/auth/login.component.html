@@ -1,0 +1,48 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <h2 class="mb-2 text-center text-primary">ยินดีต้อนรับสู่ระบบธนาคารออมทรัพย์</h2>
+  <p class="text-center text-secondary mb-4" style="font-size: 0.95rem;">
+    กรุณาเข้าสู่ระบบเพื่อใช้งานบัญชีเงินฝากของคุณ
+  </p>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="text" class="form-control shadow-sm" id="email" [(ngModel)]="email" name="email" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control shadow-sm" id="password" [(ngModel)]="password" name="password"
+        required>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">เข้าสู่ระบบ</button>
+
+    <div class="toast-container position-fixed start-50 translate-middle-x p-3" style="top: 60%; z-index: 1080;">
+      <div id="errorToast" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">{{ error }}</div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+            aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container position-fixed start-50 translate-middle-x p-3" style="z-index: 1080;">
+      <div id="successToast" class="toast align-items-center text-bg-success border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">{{ success }}</div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+            aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="text-center mt-3">
+    <span>ยังไม่มีบัญชี? </span>
+    <a routerLink="/register" class="btn btn-link p-0 align-baseline">สมัครใช้งาน</a>
+  </div>
+</div>

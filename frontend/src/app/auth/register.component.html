@@ -1,0 +1,75 @@
+<div class="container d-flex justify-content-center align-items-center vh-100" style="background-color: #f4f6f9;">
+  <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+    <h3 class="text-center mb-4 text-primary">ลงทะเบียนผู้ใช้ใหม่</h3>
+
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label class="form-label">ประเภทผู้ใช้งาน</label>
+        <select class="form-select" [(ngModel)]="role" name="role" required>
+          <option value="CUSTOMER">ลูกค้า (Customer)</option>
+          <option value="TELLER">พนักงานธนาคาร (Teller)</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control shadow-sm" [(ngModel)]="email" name="email" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control shadow-sm" [(ngModel)]="password" name="password" required>
+      </div>
+
+      <div class="mb-3" *ngIf="role === 'CUSTOMER'">
+        <label class="form-label">เลขบัตรประชาชน</label>
+        <input type="text" class="form-control shadow-sm" [(ngModel)]="citizenId" name="citizenId" maxlength="13"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">ชื่อ (ภาษาไทย)</label>
+        <input type="text" class="form-control shadow-sm" [(ngModel)]="thaiName" name="thaiName" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">ชื่อ (ภาษาอังกฤษ)</label>
+        <input type="text" class="form-control shadow-sm" [(ngModel)]="engName" name="engName" required>
+      </div>
+
+      <div class="mb-3" *ngIf="role === 'CUSTOMER'">
+        <label class="form-label">PIN (6 หลัก)</label>
+        <input type="password" class="form-control" [(ngModel)]="pin" name="pin" maxlength="6" required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">สมัครใช้งาน</button>
+
+
+
+      <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1080;">
+        <div id="errorToast" class="toast text-bg-danger border-0" role="alert" aria-live="assertive"
+          aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">{{ error }}</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1080;">
+        <div id="successToast" class="toast text-bg-success border-0" role="alert" aria-live="assertive"
+          aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">
+              {{ success }}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+</div>

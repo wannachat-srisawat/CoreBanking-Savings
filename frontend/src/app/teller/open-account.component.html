@@ -1,0 +1,57 @@
+<div class="container py-5">
+    <h3 class="text-center mb-4 text-primary">🔓 เปิดบัญชีเงินฝากออมทรัพย์</h3>
+
+    <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
+        <form (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label class="form-label">เลขบัตรประชาชน</label>
+                <input type="text" class="form-control" [(ngModel)]="citizenId" name="citizenId" required
+                    maxlength="13">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">ชื่อ (ภาษาไทย)</label>
+                <input type="text" class="form-control" [(ngModel)]="thaiName" name="thaiName" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">ชื่อ (ภาษาอังกฤษ)</label>
+                <input type="text" class="form-control" [(ngModel)]="engName" name="engName" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">เงินฝากตั้งต้น (ถ้ามี)</label>
+                <input type="number" min="0" class="form-control" [(ngModel)]="initialDeposit" name="initialDeposit">
+            </div>
+            <button type="submit" class="btn btn-success w-100">เปิดบัญชี</button>
+        </form>
+
+        <div class="mt-4 text-success fw-bold text-center" *ngIf="result">{{ result }}</div>
+        <div class="mt-4 text-danger text-center" *ngIf="error">{{ error }}</div>
+
+        <div class="text-center mt-4">
+            <button class="btn btn-outline-secondary btn-sm px-4" (click)="goBack()">
+                <i class="bi bi-arrow-left-circle"></i> กลับแดชบอร์ด
+            </button>
+        </div>
+
+    </div>
+
+    <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1080;">
+        <div id="successToast" class="toast text-bg-success border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">{{ result }}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1080;">
+        <div id="errorToast" class="toast text-bg-danger border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">{{ error }}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="container py-5">
+    <h3 class="text-center mb-4 text-secondary">📄 รายการเดินบัญชีรายเดือน</h3>
+
+    <div class="card shadow p-4 mx-auto mb-4" style="max-width: 600px;">
+        <form (ngSubmit)="onSubmit()" *ngIf="account">
+            <div class="mb-3">
+                <label class="form-label">บัญชีของคุณ</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [value]="accountNumber"
+                  disabled
+                />
+                <input type="hidden" [(ngModel)]="accountNumber" name="accountNumber" />
+              </div>
+
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">เดือน</label>
+                    <select class="form-select" [(ngModel)]="month" name="month" required>
+                        <option *ngFor="let m of [1,2,3,4,5,6,7,8,9,10,11,12]" [value]="m">
+                          {{ m }}
+                        </option>
+                      </select>
+                </div>
+                <div class="col">
+                    <label class="form-label">ปี</label>
+                    <input type="number" class="form-control" [(ngModel)]="year" name="year" min="2020" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-secondary mt-4 w-100">ดูรายการเดินบัญชี</button>
+        </form>
+
+        <div class="text-danger text-center mt-3" *ngIf="error">{{ error }}</div>
+    </div>
+
+    <div *ngIf="result" class="card shadow p-4 mx-auto" style="max-width: 800px;">
+        <h5 class="mb-3 text-center">บัญชี: {{ result.accountNumber }} - เดือน {{ result.month }}/{{ result.year }}</h5>
+
+        <table class="table table-bordered table-hover table-sm">
+            <thead class="table-light">
+                <tr>
+                    <th>วันที่</th>
+                    <th>ประเภท</th>
+                    <th>จำนวน</th>
+                    <th>ยอดคงเหลือ</th>
+                    <th>หมายเหตุ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let txn of result.transactions">
+                    <td>{{ txn.transactionDate | date: 'shortDate' }}</td>
+                    <td>{{ txn.type }}</td>
+                    <td class="text-end">{{ txn.amount | number:'1.2-2' }}</td>
+                    <td class="text-end">{{ txn.balance | number:'1.2-2' }}</td>
+                    <td>{{ txn.remark }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-end fw-bold">
+            <p class="text-success">รวมรับ: {{ result.totalIn | number:'1.2-2' }} บาท</p>
+            <p class="text-danger">รวมจ่าย: {{ result.totalOut | number:'1.2-2' }} บาท</p>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-outline-secondary btn-sm px-4" (click)="goBack()">
+            <i class="bi bi-arrow-left-circle"></i> กลับแดชบอร์ด
+        </button>
+    </div>
+    
+</div>
