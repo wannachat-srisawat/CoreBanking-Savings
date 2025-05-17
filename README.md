@@ -41,7 +41,7 @@ Users are separated into roles: **TELLER** and **CUSTOMER**, with strict role-ba
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/saving-account-corebanking.git
+git clone https://github.com/wannachat-srisawat/CoreBanking-Savings.git
 cd saving-account-corebanking
 ```
 ### 2. Start the app
